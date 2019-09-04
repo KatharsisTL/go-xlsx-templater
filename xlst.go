@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"encoding/json"
 
 	"github.com/aymerick/raymond"
 	"github.com/tealeg/xlsx"
