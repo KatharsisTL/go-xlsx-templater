@@ -246,12 +246,19 @@ func getRangeCtx(ctx map[string]interface{}, prop string) []map[string]interface
 	if !ok {
 		return nil
 	}
-
-	if propCtx, ok := val.([]map[string]interface{}); ok {
-		return propCtx
+	
+	b, _ := json.Marshal(val)
+	var v []map[string]interface{}
+	if err := json.Unmarshal(b, &v); err != nil {
+		return nil
 	}
+	return v
 
-	return nil
+// 	if propCtx, ok := val.([]map[string]interface{}); ok {
+// 		return propCtx
+// 	}
+
+// 	return nil
 }
 
 func mergeCtx(local, global map[string]interface{}) map[string]interface{} {
